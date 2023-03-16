@@ -20,9 +20,15 @@ app.set('view engine', 'ejs');
 
 // Routes
 app.use('/', require('./server/routes/index'));
+app.use('/', require('./server/routes/dashboard'));
 
-
+// Handle 404
+app.get('*', (req, res) => {
+    // res.status(404).send('This page does no exist! Please go back, Regards Prajwal :)');
+    res.status(404).render('404');
+});
 
 app.listen(port, () => {
     console.log(`App listening on port http://localhost:${port}`);
 });
+
